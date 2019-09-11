@@ -6,7 +6,7 @@
 /*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 20:18:43 by lminta            #+#    #+#             */
-/*   Updated: 2019/09/05 06:27:45 by lminta           ###   ########.fr       */
+/*   Updated: 2019/09/09 22:02:05 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ SDL_Surface	*opt_surf(t_snuffbox *m_s, SDL_Surface *in)
 static t_xy	parse_num(char *name)
 {
 	t_xy	i;
-
 	i.x = ft_atoi(name);
 	while (ft_isdigit(*name) && *name)
 		name++;
@@ -51,6 +50,8 @@ static t_xy	parse_num(char *name)
 	while (!ft_isdigit(*name) && *name)
 		name++;
 	i.intery = ft_atoi(name);
+	if ((int)i.intery == 0)
+		i.intery = 1;
 	return (i);
 }
 
@@ -64,7 +65,7 @@ void		load_dir(t_snuffbox *m_s, const char *dirname)
 	if (!(res = opendir(dirname)))
 		close_wolf(m_s, 1);
 	while ((name_buff = readdir(res)))
-		if (name_buff->d_type == 8)
+		if (name_buff->d_type == 8 && ft_isdigit(*(name_buff->d_name)))
 		{
 			buff = ft_strjoin(dirname, name_buff->d_name);
 			i = parse_num(name_buff->d_name);
