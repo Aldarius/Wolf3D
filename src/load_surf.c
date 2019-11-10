@@ -6,7 +6,7 @@
 /*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 20:18:43 by lminta            #+#    #+#             */
-/*   Updated: 2019/09/09 22:02:05 by lminta           ###   ########.fr       */
+/*   Updated: 2019/11/10 15:36:57 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ SDL_Surface	*opt_surf(t_snuffbox *m_s, SDL_Surface *in)
 static t_xy	parse_num(char *name)
 {
 	t_xy	i;
+
 	i.x = ft_atoi(name);
 	while (ft_isdigit(*name) && *name)
 		name++;
